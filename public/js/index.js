@@ -12,7 +12,7 @@ socket.on('disconnect', function () {
 
 function scrollToBottom () {
   // SELECTORS
-  var message = $('#messages');
+  var messages = $('#messages');
   var newMessage = messages.children('li:last-child');
   // HEIGHTS
   var clientHeight = messages.prop('clientHeight');
