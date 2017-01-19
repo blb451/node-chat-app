@@ -19,11 +19,11 @@ function scrollToBottom () {
   var scrollTop = messages.prop('scrollTop');
   var scrollHeight = messages.prop('scrollHeight');
   var newMessageHeight = newMessage.innerHeight();
-  var lastMessageHeight = newMessage.prev();
+  var lastMessageHeight = newMessage.prev().innerHeight();
   // CALCULATION
   if (clientHeight + scrollTop + newMessageHeight + lastMessageHeight >= scrollHeight) {
     messages.scrollTop(scrollHeight);
-  };
+  }
 };
 
 // MESSAGE TEMPLATES
