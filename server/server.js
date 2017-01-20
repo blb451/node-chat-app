@@ -19,9 +19,10 @@ const port = process.env.PORT || 3000;
 
 app.use(express.static(publicPath));
 
+//CONNECT
+
 io.on('connection', (socket) => {
   console.log('New user connected');
-
 
   socket.on('join', (params, callback) => {
     if (!isRealString(params.name) || !isRealString(params.room)) {
@@ -40,6 +41,7 @@ io.on('connection', (socket) => {
     callback();
   });
 
+//MESSAGES
 
   socket.on('createMessage', (message, callback) => {
     var user = users.getUser(socket.id);
@@ -59,6 +61,8 @@ io.on('connection', (socket) => {
     }
   });
 
+//DISCONNECT
+
   socket.on('disconnect', () => {
     var user = users.removeUser(socket.id);
     if (user) {
@@ -68,6 +72,8 @@ io.on('connection', (socket) => {
     }
   });
 });
+
+//PORT
 
 server.listen(port, () => {
   console.log(`Server running on ${port}`);
